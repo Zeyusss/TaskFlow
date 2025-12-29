@@ -3,27 +3,22 @@ import { Todo } from './todo.interface';
 export const MOCK_TODOS: Todo[] = [
   {
     id: '1',
-    title: 'Learn Angular Signals',
-    completed: false,
+    title: 'Learn Angular Signals.',
+    completed: true,
   },
   {
     id: '2',
-    title: 'Practice NgRx Signal Store',
-    completed: false,
+    title: 'Practice NgRx Signal Store.',
+    completed: true,
   },
   {
     id: '3',
-    title: 'Design TaskFlow UI',
-    completed: true,
-  },
-  {
-    id: '4',
-    title: 'Refactor components',
+    title: 'Create TaskFlow UI.',
     completed: false,
   },
   {
-    id: '5',
-    title: 'Prepare project for GitHub',
-    completed: true,
+    id: '4',
+    title: 'Write LinkedIn Post.',
+    completed: false,
   },
 ];

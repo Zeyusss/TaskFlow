@@ -33,54 +33,58 @@
         >
           <!-- Tab Item -->
           <li class="w-full">
-            <a
-              href="#"
-              class="flex items-center justify-center w-full gap-2 px-4 py-2 text-blue-700 bg-blue-100 rounded-l-xl font-medium text-sm hover:bg-blue-200 transition"
+            <button
+              (click)="store.updateFilter('all')"
+              class="flex items-center justify-center gap-x-2 w-full px-4 cursor-pointer py-2 transition"
+              [class.bg-blue-100]="store.filter() === 'all'"
+              [class.text-blue-700]="store.filter() === 'all'"
             >
               <span
-                class="w-5 h-5 bg-blue-300 text-blue-900 rounded-full flex items-center justify-center text-[12px]"
+                class="w-5 h-5 bg-neutral-200 text-neutral-500 rounded-full flex items-center justify-center text-[12px]"
               >
-                3
+                {{ store.allCount() }}
               </span>
               All
-            </a>
+            </button>
           </li>
 
           <li class="w-full">
-            <a
-              href="#"
-              class="flex items-center justify-center w-full gap-2 px-4 py-2 text-body bg-neutral-primary-soft hover:bg-neutral-secondary-medium rounded-none transition"
+            <button
+              (click)="store.updateFilter('active')"
+              class="flex items-center justify-center gap-x-2 w-full px-4 cursor-pointer py-2 transition"
+              [class.bg-blue-100]="store.filter() === 'active'"
+              [class.text-blue-700]="store.filter() === 'active'"
             >
               <span
                 class="w-5 h-5 bg-neutral-200 text-neutral-500 rounded-full flex items-center justify-center text-[12px]"
               >
-                3
+                {{ store.activeCount() }}
               </span>
               Open
-            </a>
+            </button>
           </li>
-
           <li class="w-full">
-            <a
-              href="#"
-              class="flex items-center justify-center w-full gap-2 px-4 py-2 text-body bg-neutral-primary-soft hover:bg-neutral-secondary-medium rounded-r-xl transition"
+            <button
+              (click)="store.updateFilter('completed')"
+              class="flex items-center justify-center gap-x-2 w-full px-4 cursor-pointer py-2 transition"
+              [class.bg-blue-100]="store.filter() === 'completed'"
+              [class.text-blue-700]="store.filter() === 'completed'"
             >
               <span
                 class="w-5 h-5 bg-neutral-200 text-neutral-500 rounded-full flex items-center justify-center text-[12px]"
               >
-                3
+                {{ store.completedCount() }}
               </span>
               Close
-            </a>
+            </button>
           </li>
         </ul>
       </div>
     </div>
 
-    @if(!todosStore.loading()){ @for (todo of todosStore.todos(); track todo.id ; let index =$index)
-    {
+    @if(!store.loading()){ @for (todo of store.filteredTodos(); track todo.id ; let index =$index) {
     <app-todo-item [todo]="todo" />
-    } }@else { @for (item of [1,2,3,4,5]; track $index) {
+    } }@else { @for (item of [1,2,3,4]; track $index) {
     <app-todos-skeleton />
     } }
   </div>

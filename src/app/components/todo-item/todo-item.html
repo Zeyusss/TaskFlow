@@ -5,6 +5,7 @@
         <input
           id="todo-{{ todo()?.id }}"
           [checked]="todo()?.completed"
+          (change)="onTodoToggled(todo()?.id, $event.target.checked)"
           type="checkbox"
           value=""
           class="w-4 h-4 cursor-pointer border border-black rounded-full bg-neutral-secondary-medium focus:ring-2 focus:ring-brand-soft"
@@ -18,6 +19,7 @@
         </label>
       </div>
       <span
+        (click)="onDeleteTodo(todo()?.id)"
         class="text-sm cursor-pointer border w-5 h-5 flex items-center justify-center border-neutral-600 hover:text-black transition-colors duration-300 text-neutral-600 rounded-full"
         >X</span
       >
